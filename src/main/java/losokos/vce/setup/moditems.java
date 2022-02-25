@@ -1,6 +1,6 @@
 package losokos.vce.setup;
 
-import losokos.vce.custom.CopperLightningWandItem;
+import losokos.vce.custom.CopperHelmetItem;
 import losokos.vce.tools.ModArmorTier;
 import losokos.vce.tools.ModItemTier;
 import losokos.vce.vce;
@@ -39,8 +39,7 @@ public static final RegistryObject<AxeItem> COPPER_AXE = ITEMS.register("copper_
 
     //COPPER HELMET
 
-    public static final RegistryObject<ArmorItem> COPPER_HELMET = ITEMS.register("copper_helmet", () -> new ArmorItem(ModArmorTier.COPPER, EquipmentSlot.HEAD,
-            (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
+    public static final RegistryObject<Item> COPPER_HELMET = ITEMS.register("copper_helmet", () -> new CopperHelmetItem(ModArmorTier.COPPER, EquipmentSlot.HEAD, new Item.Properties().tab(CreativeModeTab.TAB_COMBAT)));
 
     //COPPER CHEST PLATE
 
@@ -65,7 +64,7 @@ public static final RegistryObject<AxeItem> COPPER_AXE = ITEMS.register("copper_
 */
     //COPPER LIGHTNING WAND
 
-    public static final RegistryObject<Item> COPPER_LIGHTNING_WAND = ITEMS.register("copper_lightning_wand", () -> new CopperLightningWandItem(new Item.Properties()));
+    //public static final RegistryObject<Item> COPPER_LIGHTNING_WAND = ITEMS.register("copper_lightning_wand", () -> new CopperLightningWandItem(new Item.Properties()));
 
     static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
