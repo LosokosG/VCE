@@ -1,6 +1,7 @@
 package losokos.vce.setup;
 
 import losokos.vce.custom.CopperHelmetItem;
+import losokos.vce.custom.EvolvingChestplateItem;
 import losokos.vce.tools.ModArmorTier;
 import losokos.vce.tools.ModItemTier;
 import losokos.vce.vce;
@@ -64,7 +65,7 @@ public static final RegistryObject<AxeItem> COPPER_AXE = ITEMS.register("copper_
 */
     //COPPER LIGHTNING WAND
 
-    //public static final RegistryObject<Item> COPPER_LIGHTNING_WAND = ITEMS.register("copper_lightning_wand", () -> new CopperLightningWandItem(new Item.Properties()));
+    public static final RegistryObject<Item> EVOLVING_CHESTPLATE = ITEMS.register("evolving_chestplate", () -> new EvolvingChestplateItem(ModArmorTier.COPPER, EquipmentSlot.CHEST, new Item.Properties().tab(CreativeModeTab.TAB_COMBAT)));
 
     static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
