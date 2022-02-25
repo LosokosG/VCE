@@ -21,9 +21,7 @@ public class EvolvingChestplateItem extends ArmorItem {
                 player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 10));
             }
             if(player.experienceLevel >=20){
-                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 10));
-                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 2));
+                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 2));
+                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 2));
             }
-
-
         }}}
