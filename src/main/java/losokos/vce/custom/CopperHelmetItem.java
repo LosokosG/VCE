@@ -26,29 +26,34 @@ public class CopperHelmetItem extends ArmorItem {
         if (!world.isClientSide()){
 
             if(world.isThundering()){
-                //Adds "lightningEntity" that spawns lightning at players location
-                Entity lightningEntity = new LightningBolt(EntityType.LIGHTNING_BOLT, world);
-                lightningEntity.setPos(player.getX(),player.getY(),player.getZ());
 
-                BlockPos posAbove = player.getPosition().up();
-                BlockState blockStateAbove = world.getBlockState(posAbove);
-                Block above = blockStateAbove.getBlock();
 
-                if(!above.equals(Material.AIR)){
+                    //Adds "lightningEntity" that spawns lightning at players location
 
-                    //Spawns "lightningEntity" every x seconds
-                    try {
+                    Entity lightningEntity = new LightningBolt(EntityType.LIGHTNING_BOLT, world);
+                    lightningEntity.setPos(player.getX(),player.getY(),player.getZ());
 
-                        Thread.sleep(1000);
-                        world.addFreshEntity(lightningEntity);
-                    } catch (InterruptedException e) {
-                        world.addFreshEntity(lightningEntity);
+
+                      BlockPos posAbove = new BlockPos(player.blockPosition());
+                      BlockState blockStateAbove = world.getBlockState(posAbove);
+                      Block above = blockStateAbove.getBlock();
+
+                    if (!above.equals(Material.STONE)) {
+
+                        //Spawns "lightningEntity" every x seconds
+                        try {
+
+                            Thread.sleep(1000);
+                            world.addFreshEntity(lightningEntity);
+                        } catch (InterruptedException e) {
+                            world.addFreshEntity(lightningEntity);
+                        }
                     }
-                }
 
                 }
             }
         }
+
     }
 
     /*@Override
