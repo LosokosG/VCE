@@ -1,7 +1,6 @@
 package losokos.vce.custom;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -14,16 +13,41 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
-import net.minecraft.world.phys.Vec3;
 
 public class CopperHelmetItem extends ArmorItem {
     public CopperHelmetItem(ArmorMaterial material, EquipmentSlot slot, Properties properties) {
         super(material, slot, properties);
     }
 
+
+    static int worldHeightCheck() {
+
+        int i;
+        for (i = 0; i <= 256; ++i) {
+            return i;
+        }
+        return i;
+    }
+
+    static boolean isOutside(Level world, Player player,boolean isOutsideCheck){
+
+        BlockPos posAbove = new BlockPos(player.blockPosition().atY(worldHeightCheck()));
+        BlockState blockStateAbove = world.getBlockState(posAbove);
+        Block above = blockStateAbove.getBlock();
+
+
+        if(above.equals(Material.AIR)){
+            isOutsideCheck = true;
+        }
+        return isOutsideCheck;
+    }
+
     @Override
     public void onArmorTick(ItemStack stack, Level world, Player player) {
         if (!world.isClientSide()){
+
+
+            }
 
             if(world.isThundering()){
 
@@ -34,11 +58,8 @@ public class CopperHelmetItem extends ArmorItem {
                     lightningEntity.setPos(player.getX(),player.getY(),player.getZ());
 
 
-                      BlockPos posAbove = new BlockPos(player.blockPosition());
-                      BlockState blockStateAbove = world.getBlockState(posAbove);
-                      Block above = blockStateAbove.getBlock();
 
-                    if (!above.equals(Material.STONE)) {
+                    if (isOutside(world, player, true) == true) {
 
                         //Spawns "lightningEntity" every x seconds
                         try {
@@ -54,7 +75,6 @@ public class CopperHelmetItem extends ArmorItem {
             }
         }
 
-    }
 
     /*@Override
     public void onArmorTick(ItemStack stack, Level world, Player player) {
