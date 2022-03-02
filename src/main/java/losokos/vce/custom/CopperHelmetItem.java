@@ -22,8 +22,13 @@ public class CopperHelmetItem extends ArmorItem {
 
     static int worldHeightCheck() {
 
+
         int i;
-        for (i = 0; i <= 256; ++i) {
+        for (i = 0; i <= 368; ++i) {
+
+            if (i == 368) {
+                i = 0;
+            }
             return i;
         }
         return i;
@@ -31,7 +36,7 @@ public class CopperHelmetItem extends ArmorItem {
 
     static boolean isOutside(Level world, Player player,boolean isOutsideCheck){
 
-        BlockPos posAbove = new BlockPos(player.blockPosition().atY(worldHeightCheck()));
+        BlockPos posAbove = new BlockPos(player.blockPosition().above(worldHeightCheck()));
         BlockState blockStateAbove = world.getBlockState(posAbove);
         Block above = blockStateAbove.getBlock();
 
@@ -45,30 +50,16 @@ public class CopperHelmetItem extends ArmorItem {
     @Override
     public void onArmorTick(ItemStack stack, Level world, Player player) {
         if (!world.isClientSide()){
-
-
             }
 
             if(world.isThundering()){
-
-
-                    //Adds "lightningEntity" that spawns lightning at players location
-
-                    Entity lightningEntity = new LightningBolt(EntityType.LIGHTNING_BOLT, world);
-                    lightningEntity.setPos(player.getX(),player.getY(),player.getZ());
-
+                Entity lightningEntity = new LightningBolt(EntityType.LIGHTNING_BOLT, world);
+                lightningEntity.setPos(player.getX(),player.getY(),player.getZ());
 
 
                     if (isOutside(world, player, true) == true) {
 
-                        //Spawns "lightningEntity" every x seconds
-                        try {
-
-                            Thread.sleep(1000);
-                            world.addFreshEntity(lightningEntity);
-                        } catch (InterruptedException e) {
-                            world.addFreshEntity(lightningEntity);
-                        }
+                        world.addFreshEntity(lightningEntity);
                     }
 
                 }
