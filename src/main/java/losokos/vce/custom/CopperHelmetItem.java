@@ -34,21 +34,28 @@ public class CopperHelmetItem extends ArmorItem {
         return i;
     }
 
-    static boolean isOutside(Level world, Player player,boolean isOutsideCheck){
+    static boolean isOutside(Level world, Player player) {
 
-        BlockPos posAbove = new BlockPos(player.blockPosition().above(worldHeightCheck()));
+        BlockPos posAbove = new BlockPos(player.blockPosition().above());
         BlockState blockStateAbove = world.getBlockState(posAbove);
         Block above = blockStateAbove.getBlock();
 
 
-        if(above.equals(Material.AIR)){
+        boolean isOutsideCheck;
+        if (above.equals(Material.AIR)) {
             isOutsideCheck = true;
-        }
+
+        }else
+        {isOutsideCheck = false;}
         return isOutsideCheck;
     }
 
+
     @Override
     public void onArmorTick(ItemStack stack, Level world, Player player) {
+
+
+
         if (!world.isClientSide()){
             }
 
@@ -57,7 +64,7 @@ public class CopperHelmetItem extends ArmorItem {
                 lightningEntity.setPos(player.getX(),player.getY(),player.getZ());
 
 
-                    if (isOutside(world, player, true) == true) {
+                    if (isOutside(world, player) == true) {
 
                         world.addFreshEntity(lightningEntity);
                     }
