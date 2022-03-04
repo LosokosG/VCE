@@ -1,6 +1,5 @@
 package losokos.vce.custom;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -10,68 +9,33 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 
 public class CopperHelmetItem extends ArmorItem {
     public CopperHelmetItem(ArmorMaterial material, EquipmentSlot slot, Properties properties) {
         super(material, slot, properties);
     }
 
-
-    static int worldHeightCheck() {
-
-
-        int i;
-        for (i = 0; i <= 368; ++i) {
-
-            if (i == 368) {
-                i = 0;
-            }
-            return i;
-        }
-        return i;
-    }
-
-    static boolean isOutside(Level world, Player player) {
-
-        BlockPos posAbove = new BlockPos(player.blockPosition().above());
-        BlockState blockStateAbove = world.getBlockState(posAbove);
-        Block above = blockStateAbove.getBlock();
-
-
-        boolean isOutsideCheck;
-        if (above.equals(Material.AIR)) {
-            isOutsideCheck = true;
-
-        }else
-        {isOutsideCheck = false;}
-        return isOutsideCheck;
-    }
-
-
     @Override
     public void onArmorTick(ItemStack stack, Level world, Player player) {
 
+        Entity lightningEntity = new LightningBolt(EntityType.LIGHTNING_BOLT, world);
+        lightningEntity.setPos(player.getX(),player.getY(),player.getZ());
 
+        if(world.isThundering()) {
+            int TickTimer = 0;
+            ++TickTimer;
 
-        if (!world.isClientSide()){
-            }
-
-            if(world.isThundering()){
-                Entity lightningEntity = new LightningBolt(EntityType.LIGHTNING_BOLT, world);
-                lightningEntity.setPos(player.getX(),player.getY(),player.getZ());
-
-
-                    if (isOutside(world, player) == true) {
-
-                        world.addFreshEntity(lightningEntity);
-                    }
+            int random = (int) (Math.random() * 16000 + 1);
+            if (TickTimer == random) {
+                TickTimer = 0;
+                world.addFreshEntity(lightningEntity);
+                setDamage(stack, 0);
 
                 }
             }
         }
+        }
+
 
 
     /*@Override

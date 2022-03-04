@@ -1,5 +1,6 @@
 package losokos.vce.setup;
 
+import losokos.vce.custom.CopperChestplateItem;
 import losokos.vce.custom.CopperHelmetItem;
 import losokos.vce.custom.EvolvingChestplateItem;
 import losokos.vce.tools.ModArmorTier;
@@ -44,8 +45,8 @@ public static final RegistryObject<AxeItem> COPPER_AXE = ITEMS.register("copper_
 
     //COPPER CHEST PLATE
 
-    public static final RegistryObject<ArmorItem> COPPER_CHESTPLATE = ITEMS.register("copper_chestplate", () -> new ArmorItem(ModArmorTier.COPPER, EquipmentSlot.CHEST,
-            (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
+    public static final RegistryObject<Item> COPPER_CHESTPLATE = ITEMS.register("copper_chestplate", () -> new CopperChestplateItem(ModArmorTier.COPPER, EquipmentSlot.CHEST, new Item.Properties().tab(CreativeModeTab.TAB_COMBAT)));
+
 
     //COPPER LEGGINGS
 
