@@ -30,7 +30,6 @@ public class CopperHelmetItem extends ArmorItem {
                 TickTimer = 0;
                 world.addFreshEntity(lightningEntity);
                 setDamage(stack, 0);
-
                 }
             }
         }
