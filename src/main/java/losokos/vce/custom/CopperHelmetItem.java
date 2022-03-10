@@ -27,7 +27,6 @@ public class CopperHelmetItem extends ArmorItem {
 
             int random = (int) (Math.random() * 16000 + 1);
             if (TickTimer == random) {
-                TickTimer = 0;
                 world.addFreshEntity(lightningEntity);
                 setDamage(stack, 0);
                 }
