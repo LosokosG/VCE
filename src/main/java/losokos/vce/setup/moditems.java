@@ -15,6 +15,15 @@ import net.minecraftforge.registries.RegistryObject;
 public class moditems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, vce.MOD_ID);
+
+     /*
+     ======================
+             ITEMS
+     ======================
+    */
+
+    public static final RegistryObject<Item> COPPER_ARROW = ITEMS.register("copper_arrow", () -> new CopperArrowItem(new Item.Properties().tab(CreativeModeTab.TAB_COMBAT), 1.5F));
+
     /*
      ======================
          WEAPONS & TOOLS

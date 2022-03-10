@@ -1,8 +1,8 @@
 package losokos.vce.setup;
 
 import losokos.vce.vce;
+import losokos.vce.world.entity.ModEntityType;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -17,9 +17,8 @@ public class registration {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ITEMS.register(modEventBus);
         BLOCKS.register(modEventBus);
-
+        ModEntityType.register((FMLJavaModLoadingContext.get().getModEventBus()));
         moditems.register(modEventBus);
-
 
     }
 }
