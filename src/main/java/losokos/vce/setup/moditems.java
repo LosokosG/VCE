@@ -1,8 +1,6 @@
 package losokos.vce.setup;
 
-import losokos.vce.custom.CopperChestplateItem;
-import losokos.vce.custom.CopperHelmetItem;
-import losokos.vce.custom.EvolvingChestplateItem;
+import losokos.vce.custom.*;
 import losokos.vce.tools.ModArmorTier;
 import losokos.vce.tools.ModItemTier;
 import losokos.vce.vce;
@@ -50,13 +48,11 @@ public static final RegistryObject<AxeItem> COPPER_AXE = ITEMS.register("copper_
 
     //COPPER LEGGINGS
 
-    public static final RegistryObject<ArmorItem> COPPER_LEGGINGS = ITEMS.register("copper_leggings", () -> new ArmorItem(ModArmorTier.COPPER, EquipmentSlot.LEGS,
-            (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
+    public static final RegistryObject<Item> COPPER_LEGGINGS = ITEMS.register("copper_leggings", () -> new CopperLeggingsItem(ModArmorTier.COPPER, EquipmentSlot.LEGS, new Item.Properties().tab(CreativeModeTab.TAB_COMBAT)));
 
     //COPPER BOOTS
 
-    public static final RegistryObject<ArmorItem> COPPER_BOOTS = ITEMS.register("copper_boots", () -> new ArmorItem(ModArmorTier.COPPER, EquipmentSlot.FEET,
-            (new Item.Properties()).tab(CreativeModeTab.TAB_COMBAT)));
+    public static final RegistryObject<Item> COPPER_BOOTS = ITEMS.register("copper_boots", () -> new CopperBootsItem(ModArmorTier.COPPER, EquipmentSlot.FEET, new Item.Properties().tab(CreativeModeTab.TAB_COMBAT)));
 
 
     /*

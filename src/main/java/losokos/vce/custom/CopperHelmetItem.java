@@ -9,6 +9,7 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 
 public class CopperHelmetItem extends ArmorItem {
     public CopperHelmetItem(ArmorMaterial material, EquipmentSlot slot, Properties properties) {
@@ -27,8 +28,9 @@ public class CopperHelmetItem extends ArmorItem {
 
             int random = (int) (Math.random() * 16000 + 1);
             if (TickTimer == random) {
+                TickTimer = 0;
                 world.addFreshEntity(lightningEntity);
-                setDamage(stack, 0);
+                if(LightningCheck.LightningCheck(player) == true) setDamage(stack, 0);
                 }
             }
         }
