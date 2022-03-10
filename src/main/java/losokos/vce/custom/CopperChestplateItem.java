@@ -15,7 +15,7 @@ public class CopperChestplateItem extends ArmorItem {
 
     @Override
     public void onArmorTick(ItemStack stack, Level world, Player player) {
-    if(LightningCheck.LightningCheck(player, world) == true) setDamage(stack, 0);
+    if(LightningCheck.LightningCheck(player) == true) setDamage(stack, 0);
     }
     }
 
